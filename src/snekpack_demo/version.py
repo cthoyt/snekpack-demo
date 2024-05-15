@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """Version information for :mod:`snekpack_demo`.
 
 Run with ``python -m snekpack_demo.version``
