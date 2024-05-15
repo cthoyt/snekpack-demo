@@ -1,0 +1,21 @@
+{
+  "template": "https://github.com/cthoyt/cookiecutter-snekpack",
+  "commit": "7f4caa7c2c0a1edc880240e6337242cf30ac7661",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "package_name": "snekpack_demo",
+      "package_name_stylized": "Snekpack Demo",
+      "short_description": "Demonstrate the usage of the cookiecutter-snekpack template.",
+      "author_name": "Charles Tapley Hoyt",
+      "author_email": "cthoyt@gmail.com",
+      "github_organization_name": "cthoyt",
+      "github_repository_name": "snekpack-demo",
+      "command_line_interface": true,
+      "gitlab": false,
+      "__gh_slug": "cthoyt/snekpack-demo",
+      "_template": "https://github.com/cthoyt/cookiecutter-snekpack"
+    }
+  },
+  "directory": null
+}
