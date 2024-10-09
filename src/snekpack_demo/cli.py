@@ -22,7 +22,7 @@ __all__ = [
 
 @click.command()
 @click.option("--name", required=True, help="The name of the person to say hello to")
-def main(name):
+def main(name: str) -> None:
     """CLI for snekpack_demo."""
     # import inside the CLI to make running the --help command faster
     from .api import hello

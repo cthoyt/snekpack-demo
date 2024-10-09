@@ -24,10 +24,11 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Framework :: Pytest",
+    
     "Framework :: tox",
+    
     "Framework :: Sphinx",
     "Programming Language :: Python",
-    "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
@@ -46,7 +47,7 @@ keywords = [
 # See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license
 license = { file = "LICENSE" }
 
-requires-python = ">=3.8"
+requires-python = ">=3.9"
 dependencies = [
     "more_itertools", # missing from itertools in stdlib
     "tqdm", # progress bars
@@ -62,8 +63,8 @@ tests = [
     "coverage",
 ]
 docs = [
-    "sphinx",
-    "sphinx-rtd-theme",
+    "sphinx>=8",
+    "sphinx-rtd-theme>=3.0",
     "sphinx-click", 
     "sphinx_automodapi",
     # Include if your project uses Pydantic:
@@ -112,6 +113,12 @@ plugins = [
 [tool.doc8]
 max-line-length = 120
 
+# Pytest, see https://docs.pytest.org/en/stable/reference/customize.html#pyproject-toml
+[tool.pytest.ini_options]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')"
+]
+
 # Coverage, see https://coverage.readthedocs.io/en/latest/config.html
 [tool.coverage.run]
 branch = true
@@ -140,17 +147,6 @@ exclude_lines = [
     "def __repr__",
 ]
 
-[tool.black]
-line-length = 100
-target-version = ["py38", "py39", "py310", "py311"]
-
-[tool.isort]
-profile = "black"
-multi_line_output = 3
-line_length = 100
-include_trailing_comma = true
-reverse_relative = true
-
 [tool.ruff]
 line-length = 100
 extend-include = ["*.ipynb"]
@@ -165,6 +161,7 @@ extend-select = [
     "I", # isort
     "UP", # pyupgrade
     "D", # pydocstyle
+    "DOC", # pydoclint
     "B", # bugbear
     "S", # bandit
     "T20", # print
@@ -172,6 +169,7 @@ extend-select = [
     "ERA", # eradicate commented out code
     "NPY", # numpy checks
     "RUF", # ruff rules
+    "C4", # comprehensions
 ]
 ignore = [
     "D105", # Missing docstring in magic method
@@ -180,8 +178,26 @@ ignore = [
 
 # See https://docs.astral.sh/ruff/settings/#per-file-ignores
 [tool.ruff.lint.per-file-ignores]
+# Ignore security issues in the version.py, which are inconsistent
+"src/snekpack_demo/version.py" = ["S603", "S607"]
 # Ignore commented out code in Sphinx configuration file
 "docs/source/conf.py" = ["ERA001"]
+# Prints are okay in notebooks
+"notebooks/**/*.ipynb" = ["T201"]
 
 [tool.ruff.lint.pydocstyle]
 convention = "pep257"
+
+[tool.ruff.lint.isort]
+relative-imports-order = "closest-to-furthest"
+known-third-party = [
+    "tqdm",
+]
+known-first-party = [
+    "snekpack_demo",
+    "tests",
+]
+
+[tool.ruff.format]
+# see https://docs.astral.sh/ruff/settings/#format_docstring-code-format
+docstring-code-format = true
