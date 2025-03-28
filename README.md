@@ -34,7 +34,8 @@
 </p>
 
 This repository shows what happens after you create a repository using the
-[cookiecutter-snekpack](https://github.com/cthoyt/cookiecutter-snekpack) template.
+[cookiecutter-snekpack](https://github.com/cthoyt/cookiecutter-snekpack)
+template.
 
 ## 💪 Getting Started
 
