@@ -1,0 +1,4 @@
+# see https://docs.codecov.com/v4.6/docs/codecov-yaml
+ignore:
+  - "src/snekpack_demo/__main__.py"
+  - "src/snekpack_demo/cli.py"

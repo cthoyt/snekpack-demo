@@ -1,17 +1,4 @@
-"""Command line interface for :mod:`snekpack_demo`.
-
-Why does this file exist, and why not put this in ``__main__``?
-You might be tempted to import things from ``__main__``
-later, but that will cause problems--the code will get executed twice:
-
-- When you run ``python3 -m snekpack_demo`` python will
-  execute``__main__.py`` as a script. That means there won't be any
-  ``snekpack_demo.__main__`` in ``sys.modules``.
-- When you import __main__ it will get executed again (as a module) because
-  there's no ``snekpack_demo.__main__`` in ``sys.modules``.
-
-.. seealso:: https://click.palletsprojects.com/en/8.1.x/setuptools/#setuptools-integration
-"""
+"""Command line interface for :mod:`snekpack_demo`."""
 
 import click
 
@@ -28,6 +15,7 @@ def main(name: str) -> None:
     from .api import hello
 
     hello(name)
+
 
 # If you want to have a multi-command CLI, see https://click.palletsprojects.com/en/latest/commands/
 
